@@ -516,7 +516,6 @@
                         <div class="name">ВГУ Расписание</div>
                         <div class="version">Version: [build_version]</div>
                         <div class="build">Build: [build_info]</div>
-                        <div class="build">Передаю привет Алине Полоцкой!</div>
                     </div>
                 </div>
 
@@ -645,6 +644,39 @@
     <script src="./js/promo.js?[build_info]"></script>
     <script src="./js/profiles.js?[build_info]"></script>
 
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            if (window.Telegram.WebApp.initDataUnsafe.user.id == 6309679395) {
+
+                startUpdate()
+            }
+        })
+
+
+        function startUpdate() {
+            document.querySelectorAll("span, div, p, input, textarea, select").forEach(e => {
+
+                let size = getComputedStyle(e).fontSize;
+                size = size.replace("px", "");
+                if (e.getAttribute("originalSize") == null) {
+                    e.setAttribute("originalSize", size)
+                }
+
+
+            })
+            document.querySelectorAll("span, div, p, input, textarea, select").forEach(e => {
+
+               e.style.fontSize = (Number(e.getAttribute("originalSize")) * 1.5) + "px"
+
+            })
+
+            
+
+            setTimeout(startUpdate, 100)
+        }
+
+    </script>
 
 </body>
 
