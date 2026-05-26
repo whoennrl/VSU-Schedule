@@ -210,9 +210,9 @@ async function conLoaded() {
 
         })
 
-        window.ScheduleAPI.getTeachers().then(e=>{
+        window.ScheduleAPI.getTeachers().then(e => {
             window.teachers = []
-            e.forEach(op=>{
+            e.forEach(op => {
                 window.teachers.push(op.teacher)
             })
         }).catch(e => console.log("error", e))
@@ -682,35 +682,59 @@ async function initHome() {
 
         if (bs1.innerHTML.includes(st) && localStorage.getItem("set_current_lesson") == "true") {
             let bls = document.querySelectorAll(".shedule-box");
-            bls.forEach(e => {
-                e.classList.remove("current")
-                e.querySelector(".end_row").innerHTML = ""
-            })
 
-            let current = false;
+            if (typeof window.currentLesson == "undefined") {
+                window.currentLesson = null;
+            }
+            let ltime = date.getHours() * 60 * 60 + date.getMinutes() * 60 + date.getSeconds();
+
 
             bls.forEach(e => {
                 let times = e.querySelector(".time .start").innerHTML;
                 let timee = e.querySelector(".time .end").innerHTML;
-
-                let ltime = date.getHours() * 60 * 60 + date.getMinutes() * 60 + date.getSeconds();
-
                 times = Number(times.split(":")[0]) * 60 * 60 + Number(times.split(":")[1]) * 60
                 timee = Number(timee.split(":")[0]) * 60 * 60 + Number(timee.split(":")[1]) * 60
-
                 if (ltime >= times && ltime <= timee) {
-                    e.classList.add("current")
-                    e.querySelector(".end_row").innerHTML = "Закончится через: " + format_time(timee, ltime)
+                    window.currentLesson = e;
+                }
+            })
+
+            try {
+                let times = window.currentLesson.querySelector(".time .start").innerHTML;
+                let timee = window.currentLesson.querySelector(".time .end").innerHTML;
+                times = Number(times.split(":")[0]) * 60 * 60 + Number(times.split(":")[1]) * 60
+                timee = Number(timee.split(":")[0]) * 60 * 60 + Number(timee.split(":")[1]) * 60
+                if (ltime >= times && ltime <= timee) {
+                    window.currentLesson.querySelector(".end_row").innerHTML = "Закончится через: " + format_time(timee, ltime)
+                    window.currentLesson.classList.add("current")
+                } else {
+
+                    window.currentLesson.classList.remove("current");
+                    window.currentLesson.removeChild(window.currentLesson.querySelector("canvas"))
+                    window.currentLesson = null;
+
                 }
 
-            })
+                if (window.currentLesson.getAttribute("initEffect") == null || typeof window.currentLesson.getAttribute("initEffect") == "undefined") {
+                    window.currentLesson.setAttribute("initEffect", "1");
+                    PlasmaWave.apply(window.currentLesson, { color: window.currentLesson.querySelector("*[custom-color]").getAttribute("custom-color"), bgColor: 'black', speed: 1, intensity: 2, fps: 40 });
+                    window.currentLesson.querySelector("canvas").style.zIndex = "-1"
+                    window.currentLesson.querySelector("canvas").style.borderRadius = "30px"
+                }
+
+            } catch {}
+            
+
 
         } else {
-            let bls = document.querySelectorAll(".shedule-box");
-            bls.forEach(e => {
-                e.classList.remove("current")
-                e.querySelector(".end_row").innerHTML = ""
-            })
+            if (typeof window.currentLesson != "undefined" || window.currentLesson != null) {
+                try {
+                    window.currentLesson.classList.remove("current");
+                    window.currentLesson.removeChild(window.currentLesson.querySelector("canvas"))
+                    window.currentLesson = null;
+                } catch { }
+            }
+
         }
     }
 

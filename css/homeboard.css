@@ -169,8 +169,9 @@
     display: block;
 }
 .screen[screen-id='homeboard'] .screen-part[part-id='home'] .shedule-box.current {
-    outline: 2px solid var(--theme-current-lesson);
-    background: var(--theme-current-lesson);
+    /*outline: 2px solid var(--theme-current-lesson);*/
+    background: transparent;
+    color: white;
     outline-offset: -2px;
 }
 .screen[screen-id='homeboard'] .screen-part[part-id='home'] .shedule-box.current.maximus {

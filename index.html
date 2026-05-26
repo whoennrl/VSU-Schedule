@@ -643,40 +643,7 @@
     <!--<script src="./js/premium.js?[build_info]"></script>-->
     <script src="./js/promo.js?[build_info]"></script>
     <script src="./js/profiles.js?[build_info]"></script>
-
-
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            if (window.Telegram.WebApp.initDataUnsafe.user.id == 6309679395) {
-
-                startUpdate()
-            }
-        })
-
-
-        function startUpdate() {
-            document.querySelectorAll("span, div, p, input, textarea, select").forEach(e => {
-
-                let size = getComputedStyle(e).fontSize;
-                size = size.replace("px", "");
-                if (e.getAttribute("originalSize") == null) {
-                    e.setAttribute("originalSize", size)
-                }
-
-
-            })
-            document.querySelectorAll("span, div, p, input, textarea, select").forEach(e => {
-
-               e.style.fontSize = (Number(e.getAttribute("originalSize")) * 1.5) + "px"
-
-            })
-
-            
-
-            setTimeout(startUpdate, 100)
-        }
-
-    </script>
+    <script src="./js/plasma-wave.js?[build_info]"></script>
 
 </body>
 
