@@ -721,7 +721,7 @@ async function initHome() {
 
                 if (window.currentLesson.getAttribute("initEffect") == null || typeof window.currentLesson.getAttribute("initEffect") == "undefined") {
                     window.currentLesson.setAttribute("initEffect", "1");
-                    PlasmaWave.apply(window.currentLesson, { color: window.currentLesson.querySelector("*[custom-color]").getAttribute("custom-color"), bgColor: 'black', speed: 1, intensity: 2, fps: 40 });
+                    PlasmaWave.apply(window.currentLesson, { color: window.currentLesson.querySelector("*[custom-color]").getAttribute("custom-color"), bgColor: 'black', speed: 1, intensity: 0.4, fps: 40 });
                     window.currentLesson.querySelector("canvas").style.zIndex = "-1"
                     window.currentLesson.querySelector("canvas").style.borderRadius = "30px"
                 }
