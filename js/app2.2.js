@@ -359,7 +359,7 @@ async function initHome() {
 
     function handleAn(e) {
 
-
+        let olddnum = dnum;
         let swipes_set = localStorage.getItem("set_swipes");
         if (swipes_set == null) return;
         if (swipes_set == "false") return;
@@ -388,6 +388,8 @@ async function initHome() {
                 }
                 document.querySelector(".screen[screen-id='homeboard'] .screen-part[part-id='home'] .sheduleBlock").scrollTo(0, 0)
             }
+
+            if (olddnum == dnum) return
 
             selectors.forEach(o => {
                 if (o.classList.contains('selected')) { o.classList.remove("selected") }
@@ -427,6 +429,7 @@ async function initHome() {
             pointerStart = e.pageX;
 
         }
+        let olddnum = dnum;
         if (['mouseup', 'touchend'].includes(e.type)) {
             if (pointerStart + 150 < e.pageX) {
                 dnum -= 1;
@@ -442,6 +445,7 @@ async function initHome() {
                 }
                 document.querySelector(".screen[screen-id='homeboard'] .screen-part[part-id='home'] .sheduleBlock").scrollTo(0, 0)
             }
+            if (olddnum == dnum) return
 
             selectors.forEach(o => {
                 if (o.classList.contains('selected')) { o.classList.remove("selected") }
