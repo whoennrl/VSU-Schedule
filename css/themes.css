@@ -48,6 +48,28 @@ body[theme='dark'] .screen[screen-id='homeboard'] .bottom {
     background: rgba(0, 0, 0, 0)
 }
 
+
+
+body[theme='black'] {
+    --theme-background: rgba(0, 0, 0, 1);
+    --theme-box: rgba(28, 28, 30, 0.5);
+    --theme-color: rgba(255, 255, 255, 1);
+    --theme-select-color: rgb(0, 122, 255);
+    --theme-box-border: rgba(255, 255, 255, 0.15);
+
+    --theme-current-lesson: rgba(0, 122, 255, .25);
+    --theme-next-lesson: rgba(255, 255, 255, .15);
+
+    --theme-red-background: rgba(255, 56, 60, 1);
+    --theme-red-color: rgba(255, 255, 255, 1);
+}
+
+body[theme='black'] .root {
+    background: #000;
+}
+
+
+
 @keyframes move-blobs {
     0% {
         transform: translate(0, 0) scale(1) rotate(0deg);
