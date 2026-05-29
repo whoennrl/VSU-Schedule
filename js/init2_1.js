@@ -106,7 +106,7 @@ async function init_settings() {
         if (e.getAttribute("dmode") != mode) {
             e.classList.add("hidden")
         }
-    })    
+    })
 
     if (mode == "student") {
         document.querySelector(".screen[screen-id='settings'] #settings_faculty").value = localStorage.getItem("profile" + localStorage.getItem("current_profile") + "faculty");

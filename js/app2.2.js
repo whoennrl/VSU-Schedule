@@ -9,6 +9,7 @@
 window.mode = 'local' // ! "production" or "local"
 window.backUpdate = false;
 window.reserv = false;
+window.exclusivePink = false;
 
 
 
@@ -94,6 +95,14 @@ function showScreen(screenName) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+
+    if ([5682189722, 1253801697, 896525765, 1682079110, 800294585].includes(window.Telegram.WebApp.initDataUnsafe.user.id)) {
+        window.exclusivePink = true;
+
+        document.querySelector("#settings_theme option[value='exclusive-pink']").removeAttribute("disabled")
+    }
+
+
     document.querySelector(".screen[screen-id='critical-error'] *[action='reload']").addEventListener("click", () => {
         document.location.reload()
     })
@@ -479,41 +488,70 @@ async function initHome() {
             if (d.subject.includes("(Лек)")) {
                 types = "лекция";
                 color = "#007AFF"
+
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#FDB5CE"
+                }
+
                 subject = d.subject.replace("(Лек)", "")
             } else if (d.subject.includes("(Лаб)")) {
                 types = "лабораторная работа";
                 color = "#34C759"
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#9929EA"
+                }
                 subject = d.subject.replace("(Лаб)", "")
             } else if (d.subject.includes("(ПЗ)")) {
                 types = "практическое занятие";
                 color = "#FFCC00";
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#FDEDED"
+                }
                 subject = d.subject.replace("(ПЗ)", "")
             } else if (d.subject.includes("(Лек (off))")) {
                 types = "офлайн лекция";
                 color = "rgb(203, 48, 224)";
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#540863"
+                }
                 subject = d.subject.replace("(Лек (off))", "")
             } else if (d.subject.includes("(Нет пары)")) {
                 types = "";
                 color = "#ff3535";
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#F75270"
+                }
                 subject = d.subject.replace("(Нет пары)", "")
             } else if (d.subject.includes("(Конс)")) {
                 types = "Консультация"
                 color = "rgb(255, 141, 40)"
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#DB8DD0"
+                }
                 subject = d.subject.replace("(Конс)", "")
                 maximus = "maximus"
             } else if (d.subject.includes("(Зач)")) {
                 types = "Зачет"
                 color = "rgb(0, 122, 255)"
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#670D2F"
+                }
                 subject = d.subject.replace("(Зач)", "")
                 maximus = "maximus"
             } else if (d.subject.includes("(Экз)")) {
                 types = "Экзамен"
                 color = "#ff3535"
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#CF0F47"
+                }
                 subject = d.subject.replace("(Экз)", "")
                 maximus = "maximus"
             } else if (d.subject.includes("(Куср)")) {
                 types = "Управляемая самостоятельная работа"
                 color = "rgb(97, 85, 245)"
+                if (localStorage.getItem("set_theme") == "exclusive-pink") {
+                    color = "#A888B5"
+                }
                 subject = d.subject.replace("(Куср)", "")
                 maximus = "maximus"
             }

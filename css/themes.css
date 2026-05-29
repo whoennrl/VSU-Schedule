@@ -181,6 +181,24 @@ body[theme='pikmi'] {
     --theme-red-color: rgba(255, 255, 255, 1);
 }
 
+body[theme='exclusive-pink'] {
+    --theme-background: #7d3d4e;
+    --theme-box: #5c0918;
+    --theme-color: rgb(255, 255, 255);
+    --theme-select-color: #ff00c3;
+    --theme-box-border: rgba(255, 255, 255, 0.15);
+
+    --theme-current-lesson: #ff009041;
+    --theme-next-lesson: rgba(255, 255, 255, .65);
+
+    --theme-red-background: rgba(255, 56, 60, 1);
+    --theme-red-color: rgba(255, 255, 255, 1);
+}
+
+
+
+
+
 body[theme='pikmi'] .screen[screen-id='homeboard'] .shedule-box *[custom-color='#FFCC00']:not(.start) {
     color: #ff008f !important;
 }
