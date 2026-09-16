@@ -73,3 +73,6 @@
     font-weight: 500;
     font-size: 16px;
 }
+.screen[screen-id='end-support'] a {
+    color: rgb(0, 122, 255);
+}
