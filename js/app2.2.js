@@ -96,6 +96,11 @@ function showScreen(screenName) {
 
 window.addEventListener("DOMContentLoaded", () => {
 
+    showScreen("end-support");
+    return
+
+
+    
     if ([5682189722, 1253801697, 896525765, 1682079110, 800294585].includes(window.Telegram.WebApp.initDataUnsafe.user.id)) {
         window.exclusivePink = true;
 
